@@ -2,7 +2,8 @@
   "projects": {
     "default": "audio-player-a7cd7",
     "amro97": "audio-player-a7cd7",
-    "vercel deploy": "audio-player-a7cd7"
+    "vercel deploy": "audio-player-a7cd7",
+    "localhost": "audio-player-a7cd7"
   },
   "targets": {},
   "etags": {}

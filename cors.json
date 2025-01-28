@@ -1,6 +1,6 @@
 [
     {
-      "origin": ["http://localhost:5175", "https://audio-player-3.vercel.app"],
+      "origin": ["http://localhost:5175", "https://audio-player-3.vercel.app", "http://localhost:5173"],
       "method": ["GET"],
       "maxAgeSeconds": 3600,
       "responseHeader": ["Content-Type"]

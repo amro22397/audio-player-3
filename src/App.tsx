@@ -20,6 +20,9 @@ const App = () => {
   const [musicCurrentTime, setMusicCurrentTime] = useState('00 : 00');
   const [videoIndex, setVideoIndex] = useState(0)
 
+  const audioRef = useRef<any>(null);
+  const [volume, setVolume] = useState(1); 
+
   const [openUploadBar, setOpenUploadBar] = useState(false);
 
   const currentAudio = useRef<HTMLAudioElement | any>()
@@ -101,12 +104,6 @@ const App = () => {
   }
 
 
-  const handleMusicProgressBar = (e) => {
-    setAudioProgress(e.target.value);
-    currentAudio.current.currentTime = e.target.value * currentAudio.current.duration / 100;
-  }
-
-
   const handleAudioPlay = () => {
     if (currentAudio.current.paused) {
       currentAudio.current.play();
@@ -125,12 +122,28 @@ const App = () => {
     }
   }
 
+  const handleMusicProgressBar = (e: any) => {
+    setAudioProgress(e.target.value);
+    currentAudio.current.currentTime = e.target.value * currentAudio.current.duration / 100;
+  }
+
+  const handleVolumeChange = (e : any) => {
+    const newVolume = e.target.value;
+    setVolume(newVolume);
+
+    if (currentAudio.current) {
+      currentAudio.current.volume = newVolume;
+    }
+  }
+
 
   const vidArray = ['https://firebasestorage.googleapis.com/v0/b/audio-player-a7cd7.firebasestorage.app/o/files%2Fvideo1.mp4?alt=media&token=444a8711-30c8-42f5-bac3-c2138d3d7449'];
 
   return (
     <div className='relative'>
     <UploadMusic openUploadBar={openUploadBar} setOpenUploadBar={setOpenUploadBar} />
+
+
     <button onClick={() => setOpenUploadBar(!openUploadBar)}
     className='bg-green-500 absolute top-4 right-4 text-white px-2 py-1 rounded-xl'
     >OpenUploadBar</button>
@@ -150,6 +163,21 @@ const App = () => {
           <p className='musicTotalLenght'>{musicTotalLength}</p>
         </div>
         <input type="range" name="musicProgressBar" className='musicProgressBar' value={audioProgress} onChange={handleMusicProgressBar} />
+
+        <div className="volume-control flex gap-2 items-center justify-center">
+        <input
+          id="volume-slider"
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value={volume}
+          className='mb-2 mt-1'
+          onChange={handleVolumeChange}
+        />
+        {/* <span>{Math.round(volume * 100)}%</span> */}
+      </div>
+
         <div className="musicControlers">
           <i className='fa-solid fa-backward musicControler' onClick={handlePrevSong}></i>
           <i className={`fa-solid ${isAudioPlaying? 'fa-pause-circle' : 'fa-circle-play'} playBtn`} onClick={handleAudioPlay}></i>
