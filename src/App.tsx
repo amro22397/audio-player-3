@@ -126,7 +126,7 @@ const App = () => {
   }
 
 
-  const vidArray = ['https://firebasestorage.googleapis.com/v0/b/audio-player-a7cd7.firebasestorage.app/o/files%2Fvideo3.mp4?alt=media&token=b77cdb25-06c1-4e81-b238-cbff2dd11f3d'];
+  const vidArray = ['https://firebasestorage.googleapis.com/v0/b/audio-player-a7cd7.firebasestorage.app/o/files%2Fvideo1.mp4?alt=media&token=444a8711-30c8-42f5-bac3-c2138d3d7449'];
 
   return (
     <div className='relative'>
@@ -138,7 +138,7 @@ const App = () => {
 
     <div className="container">
       <audio src='./Assets/songs/Chasing - NEFFEX.mp3' ref={currentAudio} onEnded={handleNextSong} onTimeUpdate={handleAudioUpdate}></audio>
-      <video src={'https://firebasestorage.googleapis.com/v0/b/audio-player-a7cd7.firebasestorage.app/o/files%2Fvideo3.mp4?alt=media&token=b77cdb25-06c1-4e81-b238-cbff2dd11f3d'} loop muted autoPlay className='backgroundVideo'></video>
+      <video src={'https://firebasestorage.googleapis.com/v0/b/audio-player-a7cd7.firebasestorage.app/o/files%2Fvideo1.mp4?alt=media&token=444a8711-30c8-42f5-bac3-c2138d3d7449'} loop muted autoPlay className='backgroundVideo'></video>
       <div className="blackScreen"></div>
       <div className="music-Container">
         <p className='musicPlayer'>Music Player</p>
